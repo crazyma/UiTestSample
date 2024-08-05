@@ -1,6 +1,9 @@
+import org.jetbrains.kotlinx.serialization.gradle.SerializationGradleSubplugin
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
@@ -51,6 +54,11 @@ android {
 
 dependencies {
 
+    // Jetbrains
+    plugins.findPlugin(SerializationGradleSubplugin::class)?.run {
+        implementation(libs.kotlinx.serialization)
+    }
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -60,6 +68,15 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.constraintlayout)
+
+    // Squareup
+    implementation(libs.squareup.okhttp)
+    implementation(libs.squareup.okhttp.brotli)
+    implementation(libs.squareup.okhttp.logging)
+    implementation(libs.squareup.retrofit)
+    implementation(libs.squareup.retrofit.converter.kotlinx.serialization)
+    implementation(libs.squareup.retrofit.converter.scalars)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
