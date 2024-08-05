@@ -1,16 +1,27 @@
 package tw.com.batu.uitestsample.api
 
 import kotlinx.serialization.json.Json
+import okhttp3.HttpUrl
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.kotlinx.serialization.asConverterFactory
 
-class RetrofitManager {
+object RetrofitManager {
 
-    val retrofit: Retrofit by lazy {
-        Retrofit.Builder()
-            .baseUrl("https://stage.dcard.io/")
+    lateinit var retrofit: Retrofit
+
+    fun setup(baseUrl: String = "https://stage.dcard.io/") {
+        retrofit = Retrofit.Builder()
+            .baseUrl(baseUrl)
+            .client(OkHttpClient.Builder().build())
+            .addConverterFactory(httpJson.asConverterFactory("application/json".toMediaType()))
+            .build()
+    }
+
+    fun setup(baseHttpUrl: HttpUrl) {
+        retrofit = Retrofit.Builder()
+            .baseUrl(baseHttpUrl)
             .client(OkHttpClient.Builder().build())
             .addConverterFactory(httpJson.asConverterFactory("application/json".toMediaType()))
             .build()
@@ -19,7 +30,6 @@ class RetrofitManager {
     fun getPersonaService(): PersonaService {
         return retrofit.create(PersonaService::class.java)
     }
-
 }
 
 val httpJson = Json {

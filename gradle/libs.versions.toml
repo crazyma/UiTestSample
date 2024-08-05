@@ -13,10 +13,13 @@ squareup-okhttp = "4.12.0"
 squareup-retrofit = "2.10.0"
 plugin-kotlin = "2.0.0"
 kotlinx-serialization = "1.6.3"
+androidXTestVersion = "1.6.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
+androidx-runner = { group = "androidx.test", name = "runner", version.ref = "androidXTestVersion" }
+androidx-rules = { group = "androidx.test", name = "rules", version.ref = "androidXTestVersion" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
@@ -29,7 +32,7 @@ androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-toolin
 androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
-androidx-constraintlayout = {group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout"}
+androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 
 squareup-okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "squareup-okhttp" }
 squareup-okhttp-brotli = { group = "com.squareup.okhttp3", name = "okhttp-brotli", version.ref = "squareup-okhttp" }
@@ -37,7 +40,9 @@ squareup-okhttp-logging = { group = "com.squareup.okhttp3", name = "logging-inte
 squareup-retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "squareup-retrofit" }
 squareup-retrofit-converter-kotlinx-serialization = { group = "com.squareup.retrofit2", name = "converter-kotlinx-serialization", version.ref = "squareup-retrofit" }
 squareup-retrofit-converter-scalars = { group = "com.squareup.retrofit2", name = "converter-scalars", version.ref = "squareup-retrofit" }
+squareup-okhttp-mockserver = { group = "com.squareup.okhttp3", name = "mockwebserver", version.ref = "squareup-okhttp" }
 kotlinx-serialization = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
+
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

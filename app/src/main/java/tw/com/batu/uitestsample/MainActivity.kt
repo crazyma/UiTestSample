@@ -13,15 +13,16 @@ import tw.com.batu.uitestsample.model.Persona
 
 class MainActivity: ComponentActivity() {
 
-    val retrofitManager = RetrofitManager()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        RetrofitManager.setup()
 
         findViewById<Button>(R.id.button).setOnClickListener {
-            retrofitManager.getPersonaService().listRepos().enqueue(object : Callback<Persona> {
+            RetrofitManager.getPersonaService().listRepos().enqueue(object : Callback<Persona> {
                 override fun onResponse(call: Call<Persona>, response: Response<Persona>) {
                     val personas = response.body()
                     personas?.let {
