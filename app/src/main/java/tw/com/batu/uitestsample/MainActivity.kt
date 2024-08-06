@@ -36,6 +36,10 @@ class MainActivity : ComponentActivity() {
             button2.setOnClickListener {
                 textView.text = "button 2 clicked"
             }
+
+            requestButton.setOnClickListener {
+                postRequest()
+            }
         }
         countingIdlingResource.increment()
         binding.root.postDelayed({
@@ -50,6 +54,24 @@ class MainActivity : ComponentActivity() {
 
     private fun apiRequest(){
         RetrofitManager.getPersonaService().listRepos().enqueue(object : Callback<Persona> {
+            override fun onResponse(call: Call<Persona>, response: Response<Persona>) {
+                val personas = response.body()
+                personas?.let {
+                    Log.d("Persona", it.toString())
+                }
+            }
+
+            override fun onFailure(call: Call<Persona>, t: Throwable) {
+                Log.e("Persona", t.message.toString())
+            }
+        })
+    }
+
+    private fun postRequest(){
+        RetrofitManager.getPersonaService().updateUser(
+            uid = "idididi",
+            nickname = "zzzzz"
+        ).enqueue(object: Callback<Persona>{
             override fun onResponse(call: Call<Persona>, response: Response<Persona>) {
                 val personas = response.body()
                 personas?.let {
