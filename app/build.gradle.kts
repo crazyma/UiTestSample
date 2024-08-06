@@ -40,6 +40,7 @@ android {
         jvmTarget = "1.8"
     }
     buildFeatures {
+        viewBinding = true
         compose = true
     }
     composeOptions {
@@ -76,6 +77,7 @@ dependencies {
     implementation(libs.squareup.retrofit)
     implementation(libs.squareup.retrofit.converter.kotlinx.serialization)
     implementation(libs.squareup.retrofit.converter.scalars)
+    implementation(libs.androidx.espresso.idling.resource)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
@@ -85,6 +87,7 @@ dependencies {
     androidTestImplementation(libs.androidx.runner)
     androidTestImplementation(libs.androidx.rules)
     androidTestImplementation(libs.squareup.okhttp.mockserver)
+    androidTestImplementation(libs.androidx.test.core.ktx)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 }

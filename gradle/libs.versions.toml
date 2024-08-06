@@ -14,12 +14,14 @@ squareup-retrofit = "2.10.0"
 plugin-kotlin = "2.0.0"
 kotlinx-serialization = "1.6.3"
 androidXTestVersion = "1.6.1"
+espressoIdlingResource = "3.6.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-runner = { group = "androidx.test", name = "runner", version.ref = "androidXTestVersion" }
 androidx-rules = { group = "androidx.test", name = "rules", version.ref = "androidXTestVersion" }
+androidx-test-core-ktx = { group = "androidx.test", name = "core-ktx", version.ref ="androidXTestVersion" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
@@ -42,6 +44,7 @@ squareup-retrofit-converter-kotlinx-serialization = { group = "com.squareup.retr
 squareup-retrofit-converter-scalars = { group = "com.squareup.retrofit2", name = "converter-scalars", version.ref = "squareup-retrofit" }
 squareup-okhttp-mockserver = { group = "com.squareup.okhttp3", name = "mockwebserver", version.ref = "squareup-okhttp" }
 kotlinx-serialization = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
+androidx-espresso-idling-resource = { group = "androidx.test.espresso", name = "espresso-idling-resource", version.ref = "espressoIdlingResource" }
 
 
 [plugins]
