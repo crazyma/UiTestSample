@@ -7,6 +7,7 @@ import android.widget.TextView
 import androidx.activity.ComponentActivity
 import androidx.annotation.VisibleForTesting
 import androidx.test.espresso.idling.CountingIdlingResource
+import kotlinx.coroutines.runBlocking
 
 import retrofit2.Call
 import retrofit2.Callback
@@ -38,7 +39,11 @@ class MainActivity : ComponentActivity() {
             }
 
             requestButton.setOnClickListener {
-                postRequest()
+                postRequest1()
+            }
+
+            requestButton2.setOnClickListener {
+                postRequest2()
             }
         }
         countingIdlingResource.increment()
@@ -57,30 +62,50 @@ class MainActivity : ComponentActivity() {
             override fun onResponse(call: Call<Persona>, response: Response<Persona>) {
                 val personas = response.body()
                 personas?.let {
-                    Log.d("Persona", it.toString())
+                    Log.d("badu", "[MainActivity] Get Response : $it")
                 }
             }
 
             override fun onFailure(call: Call<Persona>, t: Throwable) {
-                Log.e("Persona", t.message.toString())
+                Log.e("badu", "[MainActivity] Get Failure Response : ${t.message}")
             }
         })
     }
 
-    private fun postRequest(){
+    private fun postRequest1(){
+        Log.d("badu", "[MainActivity] post request 1")
         RetrofitManager.getPersonaService().updateUser(
-            uid = "idididi",
-            nickname = "zzzzz"
+            uid = "post_uid_from_activity",
+            nickname = "post_nickname_from_activity"
         ).enqueue(object: Callback<Persona>{
             override fun onResponse(call: Call<Persona>, response: Response<Persona>) {
                 val personas = response.body()
                 personas?.let {
-                    Log.d("Persona", it.toString())
+                    Log.d("badu", "[MainActivity] Get Response : $it")
                 }
             }
 
             override fun onFailure(call: Call<Persona>, t: Throwable) {
-                Log.e("Persona", t.message.toString())
+                Log.e("badu", "[MainActivity] Get Failure Response : ${t.message}")
+            }
+        })
+    }
+
+    private fun postRequest2(){
+        Log.d("badu", "[MainActivity] post request 2")
+        RetrofitManager.getPersonaService().updateUser(
+            uid = "post_uid_from_activity_2",
+            nickname = "post_nickname_from_activity_2"
+        ).enqueue(object: Callback<Persona>{
+            override fun onResponse(call: Call<Persona>, response: Response<Persona>) {
+                val personas = response.body()
+                personas?.let {
+                    Log.d("badu", it.toString())
+                }
+            }
+
+            override fun onFailure(call: Call<Persona>, t: Throwable) {
+                Log.e("badu", t.message.toString())
             }
         })
     }

@@ -37,12 +37,12 @@ class HelloWorldEspressoTest {
 //
 //    @Before
 //    fun setUp() {
-//        Log.d("badu", "setUp")
+//        Log.d("badu", "[HelloWorldEspressoTest] setUp")
 //    }
 //
 //    @After
 //    fun clear(){
-//        Log.d("badu", "clear")
+//        Log.d("badu", "[HelloWorldEspressoTest] clear")
 //    }
 //
 //    @Test
@@ -68,7 +68,7 @@ class HelloWorldEspressoTest {
 
     @Before
     fun setUp() {
-        Log.d("badu", "setUp")
+        Log.d("badu", "[HelloWorldEspressoTest] setUp")
         activityScenario = ActivityScenario.launch(MainActivity::class.java)
         activityScenario.onActivity { activity ->
             mIdlingResource = activity.getIdlingResource()
@@ -78,7 +78,7 @@ class HelloWorldEspressoTest {
 
     @After
     fun clear(){
-        Log.d("badu", "clear")
+        Log.d("badu", "[HelloWorldEspressoTest] clear")
         activityScenario.close()
     }
 

@@ -69,7 +69,6 @@ class RetrofitTest {
         mockServer.takeRequest().let {
             assertEquals("/user/edit/badu333", it.path)
             assertEquals("POST", it.method)
-            Log.v("badu", "body: ${it.body.readUtf8()}")
         }
     }
 
